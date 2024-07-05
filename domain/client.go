@@ -4,7 +4,7 @@ import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/sdk"
 	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/auth"
 	alidomain "github.com/aliyun/alibaba-cloud-sdk-go/services/domain"
-	"github.com/codepkgs/go-alicloud/sdkconfig"
+	"github.com/codepkgs/goalicloud/sdkconfig"
 )
 
 type Domain struct {
