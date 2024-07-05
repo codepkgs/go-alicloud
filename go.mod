@@ -1,4 +1,4 @@
-module github.com/codepkgs/go-alicloud
+module github.com/codepkgs/goalicloud
 
 go 1.22.3
 
