@@ -11,7 +11,7 @@ type Domain struct {
 	client *alidomain.Client
 }
 
-func NewClient(region string, credential auth.Credential, options ...sdkconfig.Option) (*Domain, error) {
+func NewClient(region string, credential auth.Credential, options ...sdkconfig.ConfigOption) (*Domain, error) {
 	config := sdk.NewConfig()
 	for _, option := range options {
 		option(config)
