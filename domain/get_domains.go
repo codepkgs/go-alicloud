@@ -3,7 +3,6 @@ package domain
 import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	alidomain "github.com/aliyun/alibaba-cloud-sdk-go/services/domain"
-	"strconv"
 )
 
 type GetDomainsRequestParams func(*alidomain.QueryDomainListRequest)
@@ -16,7 +15,7 @@ func (d *Domain) GetDomainsWithDomainName(domainName string) GetDomainsRequestPa
 
 func (d *Domain) GetDomainsWithDomainState(state State) GetDomainsRequestParams {
 	return func(d *alidomain.QueryDomainListRequest) {
-		d.QueryType = strconv.Itoa(state)
+		d.QueryType = state
 	}
 }
 

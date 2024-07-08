@@ -1,10 +1,9 @@
 package domain
 
-type State = int
+type State = string
 
 const (
-	_ State = iota
-	Renew
-	Redeem
-	Normal
+	Renew  State = "1" // 续费
+	Redeem State = "2" // 赎回
+	Normal State = "3" // 正常
 )
