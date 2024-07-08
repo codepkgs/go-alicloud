@@ -2,31 +2,31 @@ package domain
 
 import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
-	alidomain "github.com/aliyun/alibaba-cloud-sdk-go/services/domain"
+	"github.com/aliyun/alibaba-cloud-sdk-go/services/domain"
 )
 
-type GetDomainsRequestParams func(*alidomain.QueryDomainListRequest)
+type GetDomainsRequestParams func(*domain.QueryDomainListRequest)
 
 func (d *Domain) GetDomainsWithDomainName(domainName string) GetDomainsRequestParams {
-	return func(d *alidomain.QueryDomainListRequest) {
+	return func(d *domain.QueryDomainListRequest) {
 		d.DomainName = domainName
 	}
 }
 
 func (d *Domain) GetDomainsWithDomainState(state State) GetDomainsRequestParams {
-	return func(d *alidomain.QueryDomainListRequest) {
+	return func(d *domain.QueryDomainListRequest) {
 		d.QueryType = state
 	}
 }
 
-func (d *Domain) GetDomains(params ...GetDomainsRequestParams) ([]alidomain.Domain, error) {
-	request := alidomain.CreateQueryDomainListRequest()
+func (d *Domain) GetDomains(params ...GetDomainsRequestParams) ([]domain.Domain, error) {
+	request := domain.CreateQueryDomainListRequest()
 	request.Scheme = "https"
 
 	pageNumber := 1
 	pageSize := 20
 
-	domains := make([]alidomain.Domain, 0)
+	domains := make([]domain.Domain, 0)
 
 	for {
 		request.PageNum = requests.NewInteger(pageNumber)
