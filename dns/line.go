@@ -2,10 +2,11 @@ package dns
 
 import "github.com/aliyun/alibaba-cloud-sdk-go/services/alidns"
 
-func (d *DNS) DescribeSupportLines(domainName string) (response *alidns.DescribeSupportLinesResponse, err error) {
+// DescribeSupportLines 查询支持的线路
+func (d *DNS) DescribeSupportLines(domainName string) (*alidns.DescribeSupportLinesResponse, error) {
 	request := alidns.CreateDescribeSupportLinesRequest()
 	request.Scheme = "https"
 	request.DomainName = domainName
 
-	return d.Client.DescribeSupportLines(request)
+	return d.client.DescribeSupportLines(request)
 }

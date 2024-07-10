@@ -76,7 +76,7 @@ func (d *DNS) DescribeDomainRecords(domainName string, params ...DescribeDomainR
 			param(request)
 		}
 
-		resp, err := d.Client.DescribeDomainRecords(request)
+		resp, err := d.client.DescribeDomainRecords(request)
 		if err != nil {
 			return records, nil
 		}
@@ -91,13 +91,13 @@ func (d *DNS) DescribeDomainRecords(domainName string, params ...DescribeDomainR
 }
 
 // SetDomainRecordStatus 设置解析记录状态
-func (d *DNS) SetDomainRecordStatus(recordId string, status RecordStatus) (response *alidns.SetDomainRecordStatusResponse, err error) {
+func (d *DNS) SetDomainRecordStatus(recordId string, status RecordStatus) (*alidns.SetDomainRecordStatusResponse, error) {
 	request := alidns.CreateSetDomainRecordStatusRequest()
 	request.Scheme = "https"
 	request.RecordId = recordId
 	request.Status = status
 
-	return d.Client.SetDomainRecordStatus(request)
+	return d.client.SetDomainRecordStatus(request)
 }
 
 // AddDomainRecordRequestParams 添加主机记录相关的可选参数
@@ -122,7 +122,7 @@ func (*DNS) AddDomainRecordWithLine(line string) AddDomainRecordRequestParams {
 }
 
 // AddDomainRecord 添加主机记录
-func (d *DNS) AddDomainRecord(domainName string, rr string, recordType RecordTypes, value string, params ...AddDomainRecordRequestParams) (response *alidns.AddDomainRecordResponse, err error) {
+func (d *DNS) AddDomainRecord(domainName string, rr string, recordType RecordTypes, value string, params ...AddDomainRecordRequestParams) (*alidns.AddDomainRecordResponse, error) {
 	request := alidns.CreateAddDomainRecordRequest()
 	request.Scheme = "https"
 	request.DomainName = domainName
@@ -134,15 +134,15 @@ func (d *DNS) AddDomainRecord(domainName string, rr string, recordType RecordTyp
 		param(request)
 	}
 
-	return d.Client.AddDomainRecord(request)
+	return d.client.AddDomainRecord(request)
 }
 
 // DeleteDomainRecord 删除主机记录
-func (d *DNS) DeleteDomainRecord(recordId string) (response *alidns.DeleteDomainRecordResponse, err error) {
+func (d *DNS) DeleteDomainRecord(recordId string) (*alidns.DeleteDomainRecordResponse, error) {
 	request := alidns.CreateDeleteDomainRecordRequest()
 	request.Scheme = "https"
 	request.RecordId = recordId
-	return d.Client.DeleteDomainRecord(request)
+	return d.client.DeleteDomainRecord(request)
 }
 
 // UpdateDomainRecordRequestParams 更新主机记录相关的可选参数
@@ -167,7 +167,7 @@ func (*DNS) UpdateDomainRecordWithLine(line string) AddDomainRecordRequestParams
 }
 
 // UpdateDomainRecord 修改解析记录
-func (d *DNS) UpdateDomainRecord(recordId string, rr string, recordType RecordTypes, value string, params ...UpdateDomainRecordRequestParams) (response *alidns.UpdateDomainRecordResponse, err error) {
+func (d *DNS) UpdateDomainRecord(recordId string, rr string, recordType RecordTypes, value string, params ...UpdateDomainRecordRequestParams) (*alidns.UpdateDomainRecordResponse, error) {
 	request := alidns.CreateUpdateDomainRecordRequest()
 	request.Scheme = "https"
 	request.RecordId = recordId
@@ -179,14 +179,14 @@ func (d *DNS) UpdateDomainRecord(recordId string, rr string, recordType RecordTy
 		param(request)
 	}
 
-	return d.Client.UpdateDomainRecord(request)
+	return d.client.UpdateDomainRecord(request)
 }
 
 // UpdateDomainRecordRemark 修改解析记录的备注
-func (d *DNS) UpdateDomainRecordRemark(recordId, remark string) (response *alidns.UpdateDomainRecordRemarkResponse, err error) {
+func (d *DNS) UpdateDomainRecordRemark(recordId, remark string) (*alidns.UpdateDomainRecordRemarkResponse, error) {
 	request := alidns.CreateUpdateDomainRecordRemarkRequest()
 	request.Scheme = "https"
 	request.RecordId = recordId
 	request.Remark = remark
-	return d.Client.UpdateDomainRecordRemark(request)
+	return d.client.UpdateDomainRecordRemark(request)
 }
